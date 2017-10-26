@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {dealCard} from "../ducks/reducer";
 
 
 class Dealer extends Component {
+
     render() {
       return (
         <div className="Dealer">
           <h1>Dealer</h1>
-          <div>{this.props.deck}</div>
+          {this.props.dealerHand}
         </div>
       );
     }
@@ -15,9 +17,10 @@ class Dealer extends Component {
 
 function mapStateToProps(state){
     return {
-      deck: state.deck
+      deck: state.deck,
+      dealerHand: state.dealerHand
     }
 }
 
-export default connect(mapStateToProps, {})(Dealer);
+export default connect(mapStateToProps, {dealCard})(Dealer);
   

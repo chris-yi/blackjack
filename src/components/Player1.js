@@ -6,6 +6,7 @@ class Player1 extends Component {
       return (
         <div className="Player1">
             <h1>Player1</h1>
+            {this.props.player1Hand}
         </div>
       );
     }
@@ -13,7 +14,8 @@ class Player1 extends Component {
 
   function mapStateToProps(state){
       return {
-        deck: state.deck
+        deck: state.deck,
+        player1Hand: state.player1Hand
       }
   }
   
