@@ -4,12 +4,14 @@ import {dealCard} from "../ducks/reducer";
 
 
 class Dealer extends Component {
-
     render() {
+      let dealerCardDisplay = this.props.dealerHand.map(card => {
+        return card.card;
+      })
       return (
         <div className="Dealer">
           <h1>Dealer</h1>
-          {this.props.dealerHand}
+          {dealerCardDisplay}
         </div>
       );
     }

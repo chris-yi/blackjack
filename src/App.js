@@ -3,6 +3,7 @@ import Dealer from "./components/Dealer";
 import Player1 from "./components/Player1";
 import {connect} from "react-redux";
 import {shuffle, dealCard} from "./ducks/reducer";
+import swal from "sweetalert";
 import './App.css';
 
 
@@ -28,6 +29,9 @@ class App extends Component {
 
   render() {
     console.log(this.props.deck)
+    let cardsDisplay = this.props.deck.map(card => {
+      return card.card;
+    })
     return (
       <div className="App">
         <h1>YI-HA CASINO</h1>
@@ -35,7 +39,7 @@ class App extends Component {
         <button onClick={this.deal}>Deal</button>
         <Dealer/>
         <Player1/>
-        <div>{this.props.deck}</div>
+        <div>{cardsDisplay}</div>
       </div>
     );
   }
