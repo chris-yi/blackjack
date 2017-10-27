@@ -4,25 +4,25 @@ import swal from "sweetalert";
 const singleDeck = [
     {
         card: "AS",
-        value: 11,
+        value: 1,
         img: ""
         
       },
       {
         card: "AC",
-        value: 11,
+        value: 1,
         img: ""
         
       },
       {
         card: "AD",
-        value: 11,
+        value: 1,
         img: "",
         
       },
       {
         card: "AH",
-        value: 11,
+        value: 1,
         img: "",
         
       },
@@ -352,8 +352,17 @@ export function dealCard(player) {
     }
 }
 
+export function dealerTurn(dealerValue) {
+        return {
+            type: CARD_TO_DEALER,
+            payload: ""
+        }
+    
+}
+
+
 function checkIfBust(currentValue, newCardValue){
-    if(currentValue+newCardValue > 21){
+    if(currentValue + newCardValue > 21){
         swal('BUST')
     }
 }
@@ -366,11 +375,11 @@ export default function reducer(state = initialState, action) {
     case CARD_TO_PLAYER_1:
         let player1Card = state.deck.shift();
         checkIfBust(state.player1Value, player1Card.value)
-        return Object.assign({}, state, { deck: state.deck}, {player1Hand: [...state.player1Hand, player1Card]}, {player1Value: state.player1Value+player1Card.value})
+        return Object.assign({}, state, { deck: state.deck}, {player1Hand: [...state.player1Hand, player1Card]}, {player1Value: state.player1Value + player1Card.value})
 
     case CARD_TO_DEALER:
         let dealerCard = state.deck.shift();
-        return Object.assign({}, state, { deck: state.deck}, {dealerHand: [...state.dealerHand, dealerCard]})
+        return Object.assign({}, state, { deck: state.deck}, {dealerHand: [...state.dealerHand, dealerCard]}, {dealerValue: state.dealerValue + dealerCard.value})
 
     default:
       return state;

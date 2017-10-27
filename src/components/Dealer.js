@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {dealCard} from "../ducks/reducer";
+import swal from "sweetalert";
 
 
 class Dealer extends Component {
